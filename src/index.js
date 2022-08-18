@@ -5,9 +5,8 @@ import countriesApi from "./fetchCountries";
 
 const DEBOUNCE_DELAY = 300;
 
-const input = document.querySelector('#search-box');
-input.addEventListener('input', debounce(onInputListen, DEBOUNCE_DELAY));
-const list = document.querySelector('.country-list');
+document.querySelector('#search-box').addEventListener('input', debounce(onInputListen, DEBOUNCE_DELAY));
+export const list = document.querySelector('.country-list');
 
 
 function onInputListen(evt) {
@@ -16,12 +15,13 @@ function onInputListen(evt) {
     list.innerHTML ='';
     return;
   };
-  
-  countriesApi(inputValue).then(data => createMarkup(data));
+
+  countriesApi(inputValue).then(data => createMarkup(data))
 };
 
 function createMarkup(obj) {
   if (obj.length > 10) {
+    
     return Notiflix.Notify.info('Too many matches found. Please enter a more specific name.', {
       width: '360px',
       svgSize: '120px',
