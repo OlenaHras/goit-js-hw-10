@@ -16,7 +16,9 @@ function onInputListen(evt) {
     return;
   };
 
-  countriesApi(inputValue).then(data => createMarkup(data))
+  countriesApi(inputValue).then(data => {
+    createMarkup(data)
+  })
 };
 
 function createMarkup(obj) {

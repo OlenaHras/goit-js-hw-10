@@ -6,11 +6,11 @@ export default function fetchCountries(name) {
     .then(response => {
       if (!response.ok) {
         list.innerHTML = '';
-      return Notiflix.Notify.failure('Oops, there is no country with that name.', {
-      width: '360px',
-      svgSize: '120px',
-    });
+        Notiflix.Notify.failure('Oops, there is no country with that name.', {
+          width: '360px',
+          svgSize: '120px',
+        });
       }
-    return  response.json()
-    })
+      return response.json()
+    });
 };
